@@ -9,17 +9,30 @@ $sql = "SELECT * from adminLogin where userName='$userName' and password='$passw
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 $count = mysqli_num_rows($result);
-print ($count);
 
 if ($count == 1) {
-    echo '<script>
+    echo '
+    <script>
         window.location.href="adminPortal.php";
     </script>';
 } else {
-    echo '<script>
-                window.location.href="login.php";
-                alert("Login Failed. Invaid username or Password.")
+    $query = "SELECT * from doctorlogin where did='$userName' and password='$password'";
+    $res = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($res);
+    $count = mysqli_num_rows($res);
+    if ($count == 1) {
+        echo '
+        <script>
+            window.location.href="doctorPortal.php";
         </script>';
+    } else {
+        echo '
+            <script>
+                window.location.href="login.php";
+                alert("Login Failed. Invaid username/id or Password.")
+            </script>
+            ';
+    }
 }
 
 
