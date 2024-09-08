@@ -22,6 +22,42 @@ echo '<h1>Doctor Login Successful.
     <button>
         Remove Patient Data
     </button>
+    <table border="2">
+        <thead>
+            <th>Patient's ID</th>
+            <th>
+                Name
+            </th>
+            <th>Date of Birth</th>
+            <th>
+                Allergies
+
+            </th>
+        </thead>
+        <tbody>
+            <?php
+            include "connection.php";
+
+            $query = 'SELECT * FROM patientinfo';
+            $result = mysqli_query($conn, $query);
+
+            // Check if there are any results
+            if (mysqli_num_rows($result) > 0) {
+                // Loop through each row in the result
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<tr>
+            <td>' . $row['pid'] . '</td>
+            <td>' . $row['pName'] . '</td>
+            <td>' . $row['pDOB'] . '</td>
+            <td>' . $row['pAllergies'] . '</td>
+          </tr>';
+                }
+            } else {
+                echo "<tr><td colspan='4'>No doctors found</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
 </body>
 
 </html>

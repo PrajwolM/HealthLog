@@ -28,7 +28,7 @@ if ($count == 1) {
     } else {
         echo '
             <script>
-                window.location.href="login.php";
+                window.location.href="loginPage.php";
                 alert("Login Failed. Invaid username/id or Password.")
             </script>
             ';

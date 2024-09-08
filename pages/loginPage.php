@@ -14,7 +14,7 @@ include("connection.php");
 
 <body>
   <h1>Login</h1>
-  <form action="adminLogin.php" method="POST" id="adminLoginForm">
+  <form action="loginRedirect.php" method="POST" id="adminLoginForm">
     <label for="userName"> Name: </label>
     <input type="text" id="userName" name="userName" /><br />
     <label for="password"> Password: </label>
