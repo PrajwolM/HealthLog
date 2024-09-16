@@ -18,7 +18,8 @@ HealthLog
 
 /pages
 ── home.php  
-── about.php --adminlogin
+── about.php
+--loginRedirect
 --doctorinfo
 --doctorlogin
 --doctorpatient
@@ -32,10 +33,12 @@ HealthLog
 
 Database:
 Tables:
---adminlogin: userName,password (admin,admin0)
+--adminlogin: userName,password (admin,admin0)(D0822,doctor)
 --doctorinfo: did,name,surname,gender,specialization
 --doctorlogin: did, password
 --doctorpatient: did, pid
 --patientinfo: pid, pName,phoneNumber,pGender, pDOB,pAllergies
 --patienttest: pid,tid
+--inquiries:inquiryId,iname,iemail,icontact,inquiry
+--appointments: appointmentId,did,pid,adate
 --tests: tid,tname
