@@ -1,7 +1,7 @@
 <?php
 
 include('connection.php');
-
+session_start(); //Starting session to save userName for doctors
 $userName = $_POST['userName'];
 $password = $_POST['password'];
 
@@ -11,6 +11,7 @@ $row = mysqli_fetch_assoc($result);
 $count = mysqli_num_rows($result);
 
 if ($count == 1) {
+    $_SESSION['userName'] = $userName;// storing admin userName in session for future use
     echo '
     <script>
         window.location.href="adminPortal.php";
@@ -21,6 +22,7 @@ if ($count == 1) {
     $row = mysqli_fetch_assoc($res);
     $count = mysqli_num_rows($res);
     if ($count == 1) {
+        $_SESSION['did'] = $userName;// storing doctorid in session for future use
         echo '
         <script>
             window.location.href="doctorPortal.php";
