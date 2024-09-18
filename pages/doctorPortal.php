@@ -1,6 +1,13 @@
 <?php
-echo '<h1>Doctor Login Successful.
-</h1>'; ?>
+session_start();
+if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
+    header("Location: loginPage.php"); // Redirect to login if no session is set
+    exit();
+}
+
+// Use session data
+echo "Welcome, " . (isset($_SESSION['userName']) ? $_SESSION['userName'] : $_SESSION['did']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 

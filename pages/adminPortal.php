@@ -1,7 +1,12 @@
 <?php
-echo '<h1>Admin Login Successful.
-</h1>';
-include "connection.php";
+session_start();
+if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
+    header("Location: loginPage.php"); // Redirect to login if no session is set
+    exit();
+}
+
+// Use session data
+echo "Welcome, " . (isset($_SESSION['userName']) ? $_SESSION['userName'] : $_SESSION['did']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +18,12 @@ include "connection.php";
 </head>
 
 <body>
+    <button onclick="window.location.href='viewAppointments.php';">
+        View Appointments
+    </button>
+    <button onclick="window.location.href='seeInquiries.php';">
+        View Inquiries
+    </button>
     <button>
         Add doctor
     </button> <button>
@@ -60,6 +71,7 @@ include "connection.php";
             ?>
         </tbody>
     </table>
+
 </body>
 
 </html>

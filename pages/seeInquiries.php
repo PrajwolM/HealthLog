@@ -1,18 +1,5 @@
 <?php
-// Database connection
-$servername = "localhost";
-$username = "root";  // Replace with your database username
-$password = "";      // Replace with your database password
-$dbname = "healthlogdb";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+include 'connection.php';
 // Handle delete request
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_id'])) {
     $delete_id = $conn->real_escape_string($_POST['delete_id']);
