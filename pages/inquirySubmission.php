@@ -12,10 +12,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$iname', '$iemail', '$icontact', '$inquiry')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Inquiry submitted successfully!";
+        echo "Inquiry submitted successfully! You will be redirected in 3 seconds.";
+        echo '<script>
+            setTimeout(function() {
+                window.location.href = "../index.php";
+            }, 3000);
+          </script>';
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+
 }
 
 ?>

@@ -63,7 +63,8 @@ echo "Welcome, " . (isset($_SESSION['userName']) ? $_SESSION['userName'] : $_SES
                         <td>' . htmlspecialchars($row['pid']) . '</td>
                         <td>' . htmlspecialchars($row['pName']) . '</td>
                         <td>' . htmlspecialchars($row['pDOB']) . '</td>
-                        <td>' . htmlspecialchars($row['pAllergies']) . '</td>
+                        <td>' . htmlspecialchars($row['pAllergies'] == 1 ? 'Yes' : 'No') . '</td>
+
                         <td> 
                             <button onclick="{ window.location.href=\'addTest.php?pid=' . $row['pid'] . '\'; }">Add Tests</button>
                             <button onclick="if(confirm(\'Are you sure you want to delete this patient?\')) { window.location.href=\'deletePatient.php?pid=' . $row['pid'] . '\'; }">Delete</button>
