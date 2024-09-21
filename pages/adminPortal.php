@@ -27,16 +27,15 @@ echo "Welcome, " . (isset($_SESSION['userName']) ? $_SESSION['userName'] : $_SES
     <button onclick="window.location.href='addDoctor.php';">
 
         Add doctor
-    </button> <button>
-
-        See Doctors
-    </button> <button>
-        Update Doctors
     </button>
     <button onclick="window.location.href='removeDoctor.php';">
 
 
         Remove Doctor
+    </button>
+    <button onclick="window.location.href='addNewTest.php';">
+
+        Add Test
     </button>
     <table border="2">
         <thead>
