@@ -31,14 +31,14 @@ HealthLog
 ── navToggle.js  
 ── main.js
 
-Database:
-Tables:
+Database:  
+Tables:  
 --adminlogin: userName,password (admin,admin0)(D0822,doctor)  
 --doctorinfo: did,name,surname,gender,specialization  
 --doctorlogin: did, password  
 --doctorpatient: did, pid  
 --patientinfo: pid, pName,phoneNumber,pGender, pDOB,pAllergies  
---patienttest: pid,tid,complete , result
+--patienttest: pid,tid,complete , result  
 --inquiries:inquiryId,iname,iemail,icontact,inquiry  
---appointments: appointmentId,did,pid,appointmentDate  
---tests: tid,tname
+--appointments: appointmentId,did,pid,appointmentDate    
+--tests: tid,tname  
