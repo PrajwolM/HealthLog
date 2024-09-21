@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2024 at 07:17 AM
+-- Generation Time: Sep 21, 2024 at 01:35 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -37,9 +37,8 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`userName`, `password`) VALUES
-('admin', '1234'),
-('prajwol', 'prajwol'),
-('admin', 'admin0');
+('admin', 'admin0'),
+('prajwol', 'prajwol');
 
 -- --------------------------------------------------------
 
@@ -61,7 +60,13 @@ CREATE TABLE `appointments` (
 INSERT INTO `appointments` (`appointmentId`, `did`, `pid`, `appointmentDate`) VALUES
 (1, 'D0822', 'P001', '2024-09-25'),
 (2, 'D0822', 'P002', '2024-09-26'),
-(3, 'D0822', 'P001', '2024-09-30');
+(3, 'D0822', 'P001', '2024-09-30'),
+(5, 'D0822', 'P001', '2024-09-27'),
+(6, 'D0833', 'P002', '2024-09-24'),
+(7, 'D0833', 'P004', '2024-09-27'),
+(8, 'D0867', 'P002', '2024-09-28'),
+(10, 'D0867', 'P004', '2024-09-28'),
+(12, 'D0833', 'P001', '2024-09-27');
 
 -- --------------------------------------------------------
 
@@ -127,7 +132,11 @@ CREATE TABLE `doctorpatient` (
 INSERT INTO `doctorpatient` (`did`, `pid`) VALUES
 ('D0822', 'P002'),
 ('D0833', 'P002'),
-('D0822', 'P001');
+('D0822', 'P001'),
+('D0822', 'P005'),
+('D0822', 'P006'),
+('D0822', 'P007'),
+('D0822', 'P008');
 
 -- --------------------------------------------------------
 
@@ -173,8 +182,11 @@ CREATE TABLE `patientinfo` (
 INSERT INTO `patientinfo` (`pid`, `pName`, `phoneNumber`, `pGender`, `pDOB`, `pAllergies`) VALUES
 ('P001', 'Maharaja Prasad', '9865329865', 'Male', '2014-09-15', 1),
 ('P002', 'Maharani Prasad', '6932581471', 'Male', '2014-09-16', 1),
-('P003', 'Prince Prasad', '4561237896', 'Male', '2014-09-12', 0),
-('P004', 'Princess Prasad', '5427989631', 'Male', '2014-09-14', 1);
+('P004', 'Princess Prasad', '5427989631', 'Male', '2014-09-14', 1),
+('P005', 'John Doe', '1234567890', 'Male', '1999-06-15', 0),
+('P006', 'John Doe', '1234567890', 'Male', '1999-06-15', 0),
+('P007', 'Jane Smith', '0987654321', 'Female', '2010-06-01', 1),
+('P008', 'Emily Davis', '2223334445', 'Female', '1991-05-24', 1);
 
 -- --------------------------------------------------------
 
@@ -185,26 +197,25 @@ INSERT INTO `patientinfo` (`pid`, `pName`, `phoneNumber`, `pGender`, `pDOB`, `pA
 CREATE TABLE `patienttest` (
   `tid` varchar(10) NOT NULL,
   `pid` varchar(10) NOT NULL,
-  `complete` tinyint(1) NOT NULL DEFAULT 0
+  `complete` tinyint(1) NOT NULL DEFAULT 0,
+  `result` varchar(100) NOT NULL DEFAULT 'Looks Okay.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `patienttest`
 --
 
-INSERT INTO `patienttest` (`tid`, `pid`, `complete`) VALUES
-('T001', 'P001', 0),
-('T001', 'P002', 1),
-('T002', 'P002', 1),
-('T003', 'P002', 0),
-('T002', 'P001', 1),
-('T003', 'P001', 1),
-('T004', 'P001', 1),
-('T005', 'P001', 0),
-('T001', 'P003', 0),
-('T002', 'P003', 1),
-('T003', 'P003', 1),
-('T004', 'P003', 0);
+INSERT INTO `patienttest` (`tid`, `pid`, `complete`, `result`) VALUES
+('T001', 'P001', 1, 'Blood sugar Detected.'),
+('T001', 'P002', 1, 'Looks Okay.'),
+('T002', 'P002', 1, 'Looks Okay.'),
+('T003', 'P002', 0, 'Pending'),
+('T002', 'P001', 1, 'Looks Okay.'),
+('T003', 'P001', 1, 'Looks Okay.'),
+('T004', 'P001', 1, 'Looks Okay.'),
+('T005', 'P001', 0, 'Pending'),
+('T003', 'P001', 0, 'Pending'),
+('T004', 'P002', 0, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -222,16 +233,23 @@ CREATE TABLE `tests` (
 --
 
 INSERT INTO `tests` (`tid`, `tName`) VALUES
-('T001', 'Blood Sugar Test'),
-('T002', 'Blood Test'),
-('T003', 'Urine Analysis Test'),
-('T004', 'Stool Test'),
-('T005', 'Viral Test'),
-('T006', 'MRI');
+('T001', 'Complete Blood Count'),
+('T002', 'Liver Function Test'),
+('T003', 'Kidney Function Test'),
+('T004', 'Blood Sugar Test'),
+('T005', 'Lipid Profile Test'),
+('T006', 'Urine Analysis'),
+('T007', 'Thyroid Function Test');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `adminlogin`
+--
+ALTER TABLE `adminlogin`
+  ADD PRIMARY KEY (`userName`);
 
 --
 -- Indexes for table `appointments`
@@ -293,13 +311,13 @@ ALTER TABLE `tests`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `inquiries`
 --
 ALTER TABLE `inquiries`
-  MODIFY `inquiryId` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `inquiryId` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
