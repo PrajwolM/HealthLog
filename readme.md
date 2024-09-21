@@ -31,8 +31,8 @@ HealthLog
 ── navToggle.js  
 ── main.js
 
-Database:
-Tables:
+Database:  
+Tables:  
 --adminlogin: userName,password (admin,admin0)(D0822,doctor)  
 --doctorinfo: did,name,surname,gender,specialization  
 --doctorlogin: did, password  
