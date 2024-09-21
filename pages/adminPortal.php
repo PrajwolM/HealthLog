@@ -24,7 +24,8 @@ echo "Welcome, " . (isset($_SESSION['userName']) ? $_SESSION['userName'] : $_SES
     <button onclick="window.location.href='seeInquiries.php';">
         View Inquiries
     </button>
-    <button>
+    <button onclick="window.location.href='addDoctor.php';">
+
         Add doctor
     </button> <button>
 
@@ -32,7 +33,9 @@ echo "Welcome, " . (isset($_SESSION['userName']) ? $_SESSION['userName'] : $_SES
     </button> <button>
         Update Doctors
     </button>
-    <button>
+    <button onclick="window.location.href='removeDoctor.php';">
+
+
         Remove Doctor
     </button>
     <table border="2">
