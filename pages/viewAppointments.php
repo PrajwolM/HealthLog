@@ -1,11 +1,26 @@
 <?php
 include 'connection.php';
+session_start();
 
-// SQL query to join appointments, doctorinfo, and patientinfo tables
+// Initialize SQL query
 $sql = "SELECT appointments.appointmentId, doctorinfo.name AS doctorName, patientinfo.pName AS patientName, appointments.appointmentDate 
         FROM appointments
         INNER JOIN doctorInfo ON appointments.did = doctorinfo.did
         INNER JOIN patientInfo ON appointments.pid = patientinfo.pid";
+
+// Check if user is logged in as admin
+if (isset($_SESSION['userName'])) {
+    // Admin sees all appointments grouped by doctor
+    $sql .= " ORDER BY doctorinfo.name"; // Optional: Order by doctor name
+} elseif (isset($_SESSION['did'])) {
+    // Doctor sees only their specific appointments
+    $did = $_SESSION['did'];
+    $sql .= " WHERE appointments.did = '$did'";
+} else {
+    // Redirect or show an error if not logged in
+    echo "Access denied.";
+    exit;
+}
 
 $result = $conn->query($sql);
 ?>

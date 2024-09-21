@@ -38,7 +38,7 @@ Tables:
 --doctorlogin: did, password  
 --doctorpatient: did, pid  
 --patientinfo: pid, pName,phoneNumber,pGender, pDOB,pAllergies  
---patienttest: pid,tid,complete  
+--patienttest: pid,tid,complete , result
 --inquiries:inquiryId,iname,iemail,icontact,inquiry  
---appointments: appointmentId,did,pid,adate  
+--appointments: appointmentId,did,pid,appointmentDate  
 --tests: tid,tname
