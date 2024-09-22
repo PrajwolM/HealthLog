@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
-    header("Location: loginPage.php"); // Redirect to login if no session is set
+    header("Location: loginPage.php");
     exit();
 }
 
-include "connection.php"; // Include your database connection
+include "connection.php";
 
 // Check if pid is provided in the URL
 if (!isset($_GET['pid'])) {
@@ -15,7 +15,7 @@ if (!isset($_GET['pid'])) {
 
 $pid = $_GET['pid'];
 
-// Fetch patient details and related information
+// Get patient details and related information to work on them
 $query = "
     SELECT 
         * ,
@@ -43,8 +43,6 @@ if ($patientResult->num_rows > 0) {
     exit();
 }
 
-// Fetch tests for the patient
-// Fetch tests for the patient with test names
 $testQuery = "
     SELECT pt.tid, pt.complete, pt.result, t.tname 
     FROM patienttest pt
@@ -57,7 +55,6 @@ $testStmt->bind_param("s", $pid);
 $testStmt->execute();
 $testResult = $testStmt->get_result();
 
-// Fetch all tests for categorization
 $completedTests = [];
 $remainingTests = [];
 
@@ -65,13 +62,11 @@ while ($testRow = $testResult->fetch_assoc()) {
     if ($testRow['complete'] == 1) {
         $completedTests[] = $testRow;
     } else {
-        // For remaining tests, set the result to "Pending"
         $testRow['result'] = 'Pending';
         $remainingTests[] = $testRow;
     }
 }
 
-// Close statements
 $stmt->close();
 $testStmt->close();
 $conn->close();

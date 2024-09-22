@@ -1,7 +1,7 @@
 <?php
 
 include('connection.php');
-session_start(); //Starting session to save userName for doctors
+session_start();
 $userName = $_POST['userName'];
 $password = $_POST['password'];
 

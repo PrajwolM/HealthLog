@@ -1,18 +1,18 @@
 <?php
 session_start();
 
-// Ensure only admin has access
+// Ensure only admin has access to this page
 if (!isset($_SESSION['userName'])) {
-    header("Location: loginPage.php"); // Redirect if not logged in as admin
+    // Redirect if not logged in as admin
+    header("Location: loginPage.php");
     exit();
 }
 
 include "connection.php";
 
-// Function to generate the next TID
+// Function to generate the next tid
 function generateNextTid($conn)
 {
-    // Fetch the last TID from the tests table
     $query = "SELECT tid FROM tests ORDER BY tid DESC LIMIT 1";
     $result = $conn->query($query);
 
@@ -20,11 +20,10 @@ function generateNextTid($conn)
         $row = $result->fetch_assoc();
         $lastTid = $row['tid'];
 
-        // Extract the numeric part and increment by 1
         $lastNumber = intval(substr($lastTid, 1));
         $newNumber = $lastNumber + 1;
 
-        // Format the new TID with leading zeros (e.g., T001, T002, ...)
+        // Tests are in the format 'T001'
         return 'T' . str_pad($newNumber, 3, '0', STR_PAD_LEFT);
     } else {
         // If no records, start with T001
@@ -32,14 +31,11 @@ function generateNextTid($conn)
     }
 }
 
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tname = $_POST['tname'];
 
-    // Generate the next tid
     $newTid = generateNextTid($conn);
 
-    // Insert the new test into the database
     $insertQuery = "INSERT INTO tests (tid, tname) VALUES (?, ?)";
     $stmt = $conn->prepare($insertQuery);
     $stmt->bind_param("ss", $newTid, $tname); // Bind tid and tname

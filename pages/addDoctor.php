@@ -1,24 +1,14 @@
 <?php
-// Connect to the database
-$conn = new mysqli('localhost', 'root', '', 'healthlogdb');
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Variable to store success or error message
+include 'connection.php';
 $message = "";
 
-// Check if form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form values
     $name = $_POST['name'];
     $surname = $_POST['surname'];
     $gender = $_POST['gender'];
     $specialization = $_POST['specialization'];
 
-    // Fetch the last did from the doctorlogin table
+    // Fetch the last did from the doctorlogin table to add new did incrementing it with 1
     $sql_get_last_did = "SELECT did FROM doctorlogin ORDER BY did DESC LIMIT 1";
     $result = $conn->query($sql_get_last_did);
 
@@ -26,18 +16,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
         $last_did = $row['did'];
 
-        // Extract the numeric part from the last did
-        $numeric_part = (int) substr($last_did, 1); // Extract numeric part, assuming format like 'D0866'
-        $new_numeric_part = $numeric_part + 1; // Increment the number
+        // Take the numeric part from the last did
+        $numeric_part = (int) substr($last_did, 1);
+        $new_numeric_part = $numeric_part + 1; // Increase the number by 1
 
-        // Format the new did (e.g., 'D0867')
+        // Add D to the new did (e.g., 'D0867')
         $new_did = 'D' . str_pad($new_numeric_part, 4, '0', STR_PAD_LEFT); // Ensuring 4 digits
     } else {
         // If no previous did, start with 'D0001'
         $new_did = 'D0001';
     }
-
-    // Fetch the last password from the doctorlogin table
+    //To generate default password.
+    // Fetch the last password from the doctorlogin table.
     $sql_get_last_password = "SELECT password FROM doctorlogin ORDER BY did DESC LIMIT 1";
     $result_password = $conn->query($sql_get_last_password);
 
@@ -45,22 +35,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row_password = $result_password->fetch_assoc();
         $last_password = $row_password['password'];
 
-        // Extract the numeric part from the last password
+        // Take the numeric part from the last password
         preg_match('/\d+/', $last_password, $matches);
-        $num = (int) $matches[0] + 1; // Increment the number
+        $num = (int) $matches[0] + 1; // Increase the number by 1
     } else {
-        // If no previous password, start from 5
+        // If no previous password, start from 5, as the numeric start value
         $num = 5;
     }
 
-    // Create the new password
+    // Create the new password. Add doctor in front of the number
     $new_password = "doctor" . $num;
 
-    // Insert data into doctorlogin table first
+    // Add the data into doctorlogin table first. because doctorloing table has the primary key did.
     $sql_insert_login = "INSERT INTO doctorlogin (did, password) VALUES ('$new_did', '$new_password')";
 
     if ($conn->query($sql_insert_login) === TRUE) {
-        // Now insert data into doctorinfo table with the new `did`
+        // Now add data into doctorinfo table with the new `did`
         $sql_insert_doctor = "INSERT INTO doctorinfo (did, name, surname, gender, specialization) 
                               VALUES ('$new_did', '$name', '$surname', '$gender', '$specialization')";
 

@@ -5,20 +5,11 @@ if (!isset($_SESSION['did'])) {
     exit();
 }
 
-// Connect to the database
-$conn = new mysqli('localhost', 'root', '', 'healthlogdb');
+include 'connection.php';
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Variable to store success or error message
 $message = "";
 
-// Check if form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form values
     $pName = $_POST['pName'];
     $phoneNumber = $_POST['phoneNumber'];
     $pGender = $_POST['pGender'];
@@ -34,23 +25,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
         $last_pid = $row['pid'];
 
-        // Extract the numeric part from the last pid
-        $numeric_part = (int) substr($last_pid, 1); // Assuming format like 'P001'
-        $new_numeric_part = $numeric_part + 1; // Increment the number
+        // Get the numeric part from the last pid
+        $numeric_part = (int) substr($last_pid, 1);
+        $new_numeric_part = $numeric_part + 1;
 
-        // Format the new pid (e.g., 'P002')
+        // id in the format P001
         $new_pid = 'P' . str_pad($new_numeric_part, 3, '0', STR_PAD_LEFT);
     } else {
-        // If no previous pid, start with 'P001'
         $new_pid = 'P001';
     }
 
-    // Insert patient data into patientinfo table
+    // add patient data into patientinfo table first because pid is teh primary key in this table
     $sql_insert_patient = "INSERT INTO patientinfo (pid, pName, phoneNumber, pGender, pDOB, pAllergies) 
                            VALUES ('$new_pid', '$pName', '$phoneNumber', '$pGender', '$pDOB', '$pAllergies')";
 
     if ($conn->query($sql_insert_patient) === TRUE) {
-        // Also insert into doctorpatient table
+        // Also add into doctorpatient table
         $sql_insert_doctorpatient = "INSERT INTO doctorpatient (did, pid) VALUES ('$did', '$new_pid')";
 
         if ($conn->query($sql_insert_doctorpatient) === TRUE) {

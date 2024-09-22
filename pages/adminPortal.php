@@ -1,11 +1,10 @@
 <?php
 session_start();
 if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
-    header("Location: loginPage.php"); // Redirect to login if no session is set
+    header("Location: loginPage.php");
     exit();
 }
 
-// Use session data
 echo "Welcome, " . (isset($_SESSION['userName']) ? $_SESSION['userName'] : $_SESSION['did']);
 ?>
 <!DOCTYPE html>
@@ -56,7 +55,6 @@ echo "Welcome, " . (isset($_SESSION['userName']) ? $_SESSION['userName'] : $_SES
             $query = 'SELECT * FROM doctorinfo';
             $result = mysqli_query($conn, $query);
 
-            // Check if there are any results
             if (mysqli_num_rows($result) > 0) {
                 // Loop through each row in the result
                 while ($row = mysqli_fetch_assoc($result)) {

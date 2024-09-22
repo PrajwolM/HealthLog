@@ -2,22 +2,19 @@
 include 'connection.php';
 session_start();
 
-// Initialize SQL query
 $sql = "SELECT appointments.appointmentId, doctorinfo.name AS doctorName, patientinfo.pName AS patientName, appointments.appointmentDate 
         FROM appointments
         INNER JOIN doctorInfo ON appointments.did = doctorinfo.did
         INNER JOIN patientInfo ON appointments.pid = patientinfo.pid";
 
-// Check if user is logged in as admin
 if (isset($_SESSION['userName'])) {
     // Admin sees all appointments grouped by doctor
-    $sql .= " ORDER BY doctorinfo.name"; // Optional: Order by doctor name
+    $sql .= " ORDER BY doctorinfo.name";
 } elseif (isset($_SESSION['did'])) {
     // Doctor sees only their specific appointments
     $did = $_SESSION['did'];
     $sql .= " WHERE appointments.did = '$did'";
 } else {
-    // Redirect or show an error if not logged in
     echo "Access denied.";
     exit;
 }
@@ -84,7 +81,6 @@ $result = $conn->query($sql);
         <tbody>
             <?php
             if ($result->num_rows > 0) {
-                // Output each appointment
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row["appointmentId"]) . "</td>";
@@ -101,7 +97,6 @@ $result = $conn->query($sql);
     </table>
 
     <?php
-    // Close connection
     $conn->close();
     ?>
 

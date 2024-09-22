@@ -1,6 +1,5 @@
 <?php
 include 'connection.php';
-// Handle delete request
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_id'])) {
     $delete_id = $conn->real_escape_string($_POST['delete_id']);
     $sql_delete = "DELETE FROM inquiries WHERE inquiryId = '$delete_id'";
@@ -12,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_id'])) {
     }
 }
 
-// Fetch all inquiries from the database
 $sql = "SELECT inquiryId, iname, iemail, icontact, inquiry FROM inquiries";
 $result = $conn->query($sql);
 ?>
@@ -93,7 +91,6 @@ $result = $conn->query($sql);
     <div class="inquiry-container">
         <?php
         if ($result->num_rows > 0) {
-            // Output each inquiry as a card
             while ($row = $result->fetch_assoc()) {
                 echo "<div class='inquiry-card'>";
                 echo "<form method='POST' onsubmit='return confirm(\"Are you sure you want to delete this inquiry?\");'>";
@@ -113,7 +110,6 @@ $result = $conn->query($sql);
     </div>
 
     <?php
-    // Close connection
     $conn->close();
     ?>
 

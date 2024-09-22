@@ -1,8 +1,9 @@
 <?php
 include("connection.php");
-session_start();  // Start the session
-session_unset();  // Unset all session variables
-session_destroy();  // Destroy the session
+session_start();
+//Remove all data from previous session
+session_unset();
+session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">

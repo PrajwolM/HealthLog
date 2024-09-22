@@ -1,11 +1,10 @@
 <?php
 session_start();
 if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
-    header("Location: loginPage.php"); // Redirect to login if no session is set
+    header("Location: loginPage.php");
     exit();
 }
 
-// Use session data
 echo "Welcome, " . (isset($_SESSION['userName']) ? $_SESSION['userName'] : $_SESSION['did']);
 ?>
 <!DOCTYPE html>
@@ -33,31 +32,26 @@ echo "Welcome, " . (isset($_SESSION['userName']) ? $_SESSION['userName'] : $_SES
                 <th>Date of Birth</th>
                 <th>Allergies</th>
                 <th>Actions</th>
-                <th>Details</th> <!-- New Actions column -->
+                <th>Details</th>
             </tr>
         </thead>
         <tbody>
             <?php
             include "connection.php";
 
-            // Get the doctor's ID from the session
             $did = $_SESSION['did'];
 
-            // Update the query to filter by doctor's ID
             $query = "SELECT patientinfo.* 
                       FROM patientinfo 
                       INNER JOIN doctorpatient ON patientinfo.pid = doctorpatient.pid 
                       WHERE doctorpatient.did = ?";
 
-            // Prepare and execute the query
             $stmt = $conn->prepare($query);
-            $stmt->bind_param("s", $did); // Assuming did is a string
+            $stmt->bind_param("s", $did);
             $stmt->execute();
             $result = $stmt->get_result();
 
-            // Check if there are any results
             if ($result->num_rows > 0) {
-                // Loop through each row in the result
                 while ($row = $result->fetch_assoc()) {
                     echo '<tr>
                         <td>' . htmlspecialchars($row['pid']) . '</td>
@@ -78,7 +72,6 @@ echo "Welcome, " . (isset($_SESSION['userName']) ? $_SESSION['userName'] : $_SES
                 echo "<tr><td colspan='5'>No patients found</td></tr>";
             }
 
-            // Close the statement
             $stmt->close();
             ?>
         </tbody>

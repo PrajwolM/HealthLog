@@ -1,13 +1,12 @@
 <?php
 session_start();
 if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
-    header("Location: loginPage.php"); // Redirect to login if no session is set
+    header("Location: loginPage.php");
     exit();
 }
 
-include "connection.php"; // Include your database connection
+include "connection.php";
 
-// Check if pid is provided in the URL
 if (!isset($_GET['pid'])) {
     echo "No patient ID provided.";
     exit();
@@ -15,7 +14,6 @@ if (!isset($_GET['pid'])) {
 
 $pid = $_GET['pid'];
 
-// Fetch remaining tests for the patient along with test names
 $testQuery = "
     SELECT pt.tid, pt.complete, pt.result, t.tname 
     FROM patienttest pt
@@ -28,16 +26,13 @@ $testStmt->bind_param("s", $pid);
 $testStmt->execute();
 $testResult = $testStmt->get_result();
 
-// Close the statement
 $testStmt->close();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Handle the form submission
     $tid = $_POST['tid'];
     $result = $_POST['result'];
     $complete = isset($_POST['complete']) ? 1 : 0;
 
-    // Update the test data
     $updateQuery = "UPDATE patienttest SET complete = ?, result = ? WHERE pid = ? AND tid = ?";
     $updateStmt = $conn->prepare($updateQuery);
     $updateStmt->bind_param("isss", $complete, $result, $pid, $tid);

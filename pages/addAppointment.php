@@ -2,18 +2,14 @@
 include 'connection.php';
 session_start();
 
-// Get doctor ID (did) from session 
 $doctorId = $_SESSION['did'];
-// Fetch patient list
 $patients_sql = "SELECT pid, pName FROM patientInfo";
 $patients_result = $conn->query($patients_sql);
 
-// Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pid = $conn->real_escape_string($_POST['patient']);
     $appointmentDate = $conn->real_escape_string($_POST['appointmentDate']);
 
-    // Insert new appointment into the database
     $sql = "INSERT INTO appointments (did, pid, appointmentDate) VALUES ('$doctorId', '$pid', '$appointmentDate')";
 
     if ($conn->query($sql) === TRUE) {
@@ -89,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <select name="patient" id="patient" required>
             <option value="">-- Select Patient --</option>
             <?php
-            // Output each patient as an option in the dropdown
+            // Show all patient as option for selection
             if ($patients_result->num_rows > 0) {
                 while ($row = $patients_result->fetch_assoc()) {
                     echo "<option value='" . htmlspecialchars($row['pid']) . "'>" . htmlspecialchars($row['pName']) . "</option>";
@@ -108,7 +104,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <?php
-    // Close connection
     $conn->close();
     ?>
 

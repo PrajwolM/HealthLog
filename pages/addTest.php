@@ -7,7 +7,7 @@ if (!isset($_SESSION['did'])) {
 
 include "connection.php";
 
-// Check if pid is provided in the URL
+// to add new test to patient
 if (!isset($_GET['pid'])) {
     echo "No patient ID provided.";
     exit();
@@ -15,17 +15,15 @@ if (!isset($_GET['pid'])) {
 
 $pid = $_GET['pid'];
 
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tid = $_POST['tid'];
 
-    // Insert into patienttest with complete = 0 and result = 'Pending'
     $insertQuery = "
         INSERT INTO patienttest (pid, tid, complete, result)
         VALUES (?, ?, 0, 'Pending')
     ";
     $stmt = $conn->prepare($insertQuery);
-    $stmt->bind_param("ss", $pid, $tid); // Assuming both pid and tid are strings
+    $stmt->bind_param("ss", $pid, $tid);
     if ($stmt->execute()) {
         echo "Test added successfully!";
     } else {
@@ -34,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
 }
 
-// Fetch all available tests
 $testQuery = "SELECT tid, tname FROM tests";
 $testResult = $conn->query($testQuery);
 ?>
