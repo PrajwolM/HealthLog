@@ -25,7 +25,7 @@ if ($count == 1) {
         $_SESSION['did'] = $userName;// storing doctorid in session for future use
         echo '
         <script>
-            window.location.href="doctorPage.php";
+            window.location.href="doctorPortal.php";
         </script>';
     } else {
         echo '
