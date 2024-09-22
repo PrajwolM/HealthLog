@@ -1,4 +1,5 @@
 <?php
+include '../layouts/header.php';
 session_start();
 if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
     header("Location: login.php");
@@ -111,6 +112,7 @@ $conn->close();
 </head>
 
 <body>
+    <button class="btn btn-outline-secondary float-start" onclick="window.location.href='../pages/doctorPage.php';">Back</button> 
 
     <h2>Patient Details for <?php echo htmlspecialchars($patientData['pName']); ?></h2>
     <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($patientData['phoneNumber']); ?></p>

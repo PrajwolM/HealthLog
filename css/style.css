@@ -215,6 +215,38 @@ margin-top: 3rem;
     right: 20px;
 }
 
+/* dortor page */
+.doctor-portal{
+    display: flex;
+    height: 100vh;
+}
+.doctor-portal .sidenav {
+    width: 250px;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+}
+.doctor-portal .sidenav a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    display: block;
+}
+.doctor-portal .sidenav a:hover {
+    background-color: #e2e6ea;
+    border-radius: 4px;
+}
+.doctor-portal .main {
+    flex: 1;
+    padding: 20px;
+}
+.doctor-portal .logout-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+
 /* appointment */
 .admin-doctor, .appointment .main{
     padding: 2rem;

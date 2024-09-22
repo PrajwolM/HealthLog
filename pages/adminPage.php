@@ -8,13 +8,15 @@ if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
 
 ?>
 
+
 <section class="admin">
     <div class="sidenav">
         <h2 class="text-center">Admin</h2>
         <a href="#">Dashboard</a>
         <a href="appointment.php">Appointments</a>
-        <a href="addDoctor.php">Add Doctor</a>
-        <a href="removeDoctor.php">Remove Doctor</a>
+        <a href="doctor.php">Doctor</a>
+        <!-- <a href="addDoctor.php">Add Doctor</a>
+        <a href="removeDoctor.php">Remove Doctor</a> -->
         <a href="addNewTest.php">Add Tests</a>
         <a href="seeInquiries.php">Inquiries</a>
     </div>

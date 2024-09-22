@@ -15,7 +15,7 @@
             <div class="row py-4">
                 <div class="col-lg-6 col-md-12 mb-4">
                     <h6 class="mb-3">HealthLogs</h6>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis a consequuntur dolor officiis eos, delectus molestias eveniet accusantium minus quisquam commodi adipisci dicta. Eum ut dignissimos iusto. Assumenda, expedita suscipit.</p>
+                    <p>At HealthLogs, we believe that your health deserves the highest standard of care. Our dedicated team of experts is here to support you every step of the way, providing personalized, compassionate, and comprehensive services tailored to your unique needs.</p>
                     <div class="social d-flex gap-2 mt-3">
                         <a href="https://www.facebook.com/" class="text-dark"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/" class="text-dark"><i class="fab fa-instagram"></i></a>

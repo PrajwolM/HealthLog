@@ -6,9 +6,7 @@
             <div class="row">
                 <div class="col-7">
                     <h1>Reach Out To <br> HealthLogs Today</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam dignissimos molestias consectetur
-                        dolore molestiae et delectus velit error! Veniam ipsum quis ullam voluptate illum voluptatibus
-                        corporis non? Nesciunt, ex dolorum.</p>
+                    <p>At HealthLogs, we believe that your health deserves the highest standard of care. Our dedicated team of experts is here to support you every step of the way, providing personalized, compassionate, and comprehensive services tailored to your unique needs.</p>
                 </div>
                 <div class="col-5">
                     <img src="../images/slider2.jpg" alt="doctor-banner">
