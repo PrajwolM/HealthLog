@@ -33,9 +33,9 @@ HealthLog
 
 Database:  
 Tables:  
---adminlogin: userName,password (admin,admin0)(D0822,doctor)  
+--adminlogin: userName,password (admin,admin0) 
 --doctorinfo: did,name,surname,gender,specialization  
---doctorlogin: did, password  
+--doctorlogin: did, password (D0822,doctor)  
 --doctorpatient: did, pid  
 --patientinfo: pid, pName,phoneNumber,pGender, pDOB,pAllergies  
 --patienttest: pid,tid,complete , result  
