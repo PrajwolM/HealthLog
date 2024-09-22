@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
-    header("Location: loginPage.php");
+    header("Location: login.php");
     exit();
 }
 

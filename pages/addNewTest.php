@@ -4,7 +4,7 @@ session_start();
 // Ensure only admin has access to this page
 if (!isset($_SESSION['userName'])) {
     // Redirect if not logged in as admin
-    header("Location: loginPage.php");
+    header("Location: login.php");
     exit();
 }
 

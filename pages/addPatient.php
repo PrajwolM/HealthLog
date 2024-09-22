@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['did'])) {
-    header("Location: loginPage.php"); // Redirect to login if no session is set
+    header("Location: login.php"); // Redirect to login if no session is set
     exit();
 }
 

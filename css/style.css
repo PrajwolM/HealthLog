@@ -1,0 +1,308 @@
+/* #4A6A41 */
+body{
+    width: 100%;
+}
+h1,h2{
+    color: #4A6A41;
+}
+/* slider */
+.carousel-item img {
+    width: 100%;
+    height: 100vh; 
+    object-fit: cover; 
+}
+
+/* home */
+.home .about, .features, .top-left{
+    margin: 4rem ;
+    gap: 2rem;
+}
+.home p{
+    text-align: justify;
+}
+.home .features .icon i{
+   font-weight: 900rem;
+}
+.home .features h2{
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.features .icon{
+    font-size: 3.5rem;
+    color: #4A6A41;
+}
+
+/* about */
+.about img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.about .sub-content {
+    margin-top: 20px;
+}
+.about ul {
+    list-style: none;
+    padding: 0;
+}
+.about ul li {
+    margin-bottom: 10px;
+}
+
+/* working schedule */
+.working {
+    position: relative;
+    text-align: left; 
+    margin-bottom: 2rem;
+}
+.working img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover; 
+}
+.top-left {
+    position: absolute;
+    top: -20px; 
+    left: -20px; 
+    background: rgba(0, 0, 0, 0.5); 
+    padding: 20px;
+    border-radius: 10px;
+    color: white; 
+    max-width: 400px; 
+}
+.top-left h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.top-left p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+.schedule {
+    margin-bottom: 10px;
+}
+.schedule i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+.schedule .day, .schedule .time {
+    display: flex;
+    align-items: center;
+}
+.schedule .day {
+    font-weight: bold;
+}
+.schedule .time p {
+    margin: 0;
+}
+
+/* doctor-details */
+.doctor{
+    padding: 2rem;
+}
+.doctor h2{
+    margin-top: 4rem;
+    text-align: center;
+}
+.doctor .teams .card{
+    margin-top: 2rem;
+}
+
+/* contact-us, services */
+.contact, .services {
+    padding: 20px; 
+}
+.contact-us, .key{
+    margin: 5rem 0;
+}
+.banner {
+    margin-bottom: 20px;
+}
+
+.banner img {
+    width: 100%;
+    height: auto; 
+    display: block; 
+}
+
+.banner .col-md-7 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.banner h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.banner p {
+    font-size: 1em; 
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.contact-us img, .key img {
+    width: 100%;
+    height: auto; 
+    display: block;
+    margin-bottom: 20px;
+}
+
+.contact-us h1, .contact-us h2, .key h1, .key h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.contact-us p, .key p, .choose p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* services */
+.key, .choose h2{
+    margin-bottom: 2rem;
+}
+
+/* login page */
+.login .divider:after,
+.login .divider:before {
+content: "";
+flex: 1;
+height: 1px;
+}
+.login .h-custom {
+height: calc(100% - 73px);
+margin-top: 3rem;
+}
+.login .lead{
+    text-align: center;
+}
+@media (max-width: 450px) {
+    .login .h-custom {
+    height: 100%;
+    }
+}
+
+/* admin page */
+.admin{
+    display: flex;
+    height: 100vh;
+}
+.admin .sidenav {
+    width: 250px;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+}
+.admin .sidenav a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    display: block;
+}
+.admin .sidenav a:hover {
+    background-color: #e2e6ea;
+    border-radius: 4px;
+}
+.admin .main {
+    flex: 1;
+    padding: 20px;
+}
+.admin .logout-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+/* appointment */
+.admin-doctor, .appointment .main{
+    padding: 2rem;
+}
+.admin-doctor, .appointment h2{
+    margin-top: 4rem;
+    text-align: center;
+}
+
+/* Responsive Design */
+/* Tablets and Small Desktops */
+@media (max-width: 992px) {
+    /* working schedule */
+    .top-left {
+        left: 10px;
+        right: 10px;
+        top: 10px;
+        max-width: 90%;
+    }
+
+    .top-left h1 {
+        font-size: 1.75rem;
+    }
+
+    .top-left p {
+        font-size: 0.875rem;
+    }
+
+    .schedule i {
+        font-size: 1.25rem;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    /* working schedule */
+    .top-left {
+        left: 5px;
+        right: 5px;
+        top: 5px;
+        max-width: 100%;
+    }
+
+    .top-left h1 {
+        font-size: 1.5rem;
+    }
+
+    .top-left p {
+        font-size: 0.75rem;
+    }
+
+    .schedule i {
+        font-size: 1.2rem;
+    }
+
+    .schedule {
+        margin-bottom: 5px;
+    }
+
+     /* contact */
+     .contact-us .col-lg-6, .banner .col-md-5 {
+        text-align: center;
+    }
+
+    .banner h1 {
+        font-size: 2em; 
+    }
+
+    .contact-us h1 {
+        font-size: 1.5em; 
+    }
+
+    .contact-us p {
+        font-size: 0.9em; 
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 576px) {
+    .top-left h1 {
+        font-size: 1.25rem;
+    }
+
+    .top-left p {
+        font-size: 0.65rem;
+    }
+
+    .schedule i {
+        font-size: 1rem;
+    }
+}
