@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Add Test</button>
     </form>
 
-    <button onclick="window.location.href='adminPortal.php';">Back to Admin Portal</button>
+    <button onclick="window.location.href='adminPage.php';">Back to Admin Portal</button>
 
 </body>
 

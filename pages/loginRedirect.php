@@ -14,7 +14,7 @@ if ($count == 1) {
     $_SESSION['userName'] = $userName;// storing admin userName in session for future use
     echo '
     <script>
-        window.location.href="adminPortal.php";
+        window.location.href="adminPage.php";
     </script>';
 } else {
     $query = "SELECT * from doctorlogin where did='$userName' and password='$password'";
@@ -25,7 +25,7 @@ if ($count == 1) {
         $_SESSION['did'] = $userName;// storing doctorid in session for future use
         echo '
         <script>
-            window.location.href="doctorPortal.php";
+            window.location.href="doctorPage.php";
         </script>';
     } else {
         echo '
