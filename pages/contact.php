@@ -23,9 +23,7 @@
 
                 <div class="col-lg-6">
                     <h2 class="text-center">We're Here To Assist You</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus itaque, laudantium aut
-                        perferendis assumenda odio distinctio adipisci! Aliquam sint magni corrupti, cupiditate error
-                        cum, ab repellendus hic quis ipsam eaque?</p>
+                    <p>we're dedicated to providing you with exceptional support and care. Whether you have questions about our services, need assistance scheduling an appointment, or require information about your health records, our friendly team is here to help. </p>
                     <form id="contactForm" action="inquirySubmission.php" method="POST" novalidate>
                         <div class="row mb-3">
                             <div class="col-md-6">

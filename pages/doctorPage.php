@@ -55,7 +55,7 @@ $result = $stmt->get_result();
     </div>
 
     <div class="main">
-        <a href="login.php" class="btn btn-outline-danger logout-btn">Logout</a>
+        <a href="login.php" class="btn btn-danger logout-btn">Logout</a>
         <h2>Dashboard</h2>
         <div class="row">
             <div class="col-md-12">
@@ -70,6 +70,8 @@ $result = $stmt->get_result();
         </div>
 
         <div class="mt-4">
+            <a href="addPatient.php" class="btn btn-success mb-3 float-end">Add Patient</a>
+
             <h3>Patients</h3>
             <?php if ($message): ?>
                 <div class="alert alert-info"><?php echo $message; ?></div>

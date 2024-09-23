@@ -26,7 +26,7 @@ $result = $conn->query($sql);
 <section class="appointment">
     <div class="main">
         <!-- <button class="btn btn-outline-secondary float-start" onclick="window.location.href='../pages/adminPage.php';">Back</button>  -->
-        <a href="javascript:history.back()" class="btn btn-outline-secondary float-start">Back</a>
+        <a href="javascript:history.back()" class="btn btn-secondary float-start">Back</a>
         <h2>Appointments</h2>
 
 

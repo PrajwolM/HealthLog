@@ -94,17 +94,18 @@ $conn->close();
 
 <section class="admin-doctor">
     <div class="main container mt-4">
-        <button class="btn btn-outline-secondary float-start" onclick="window.location.href='../pages/adminPage.php';">Back</button> 
+        <button class="btn btn-secondary float-start" onclick="window.location.href='../pages/adminPage.php';">Back</button> 
+        <button class="btn btn-primary  float-start ms-2" data-bs-toggle="modal" data-bs-target="#addDoctorModal">Add Doctor</button>
+
         <h2 class="text-center">Doctors Management</h2>
         <?php if ($message): ?>
             <div class="alert alert-info"><?php echo $message; ?></div>
         <?php endif; ?>
-        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addDoctorModal">Add Doctor</button>
 
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Specialization</th>
                     <th>Actions</th>

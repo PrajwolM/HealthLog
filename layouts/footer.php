@@ -25,9 +25,9 @@
                 <div class="col-lg-2 col-md-4 mb-4">
                     <h3>Quick Links</h3>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-dark text-decoration-none">Our Doctors</a></li>
-                        <li><a href="#" class="text-dark text-decoration-none">Services</a></li>
-                        <li><a href="#" class="text-dark text-decoration-none">Packages</a></li>
+                        <li><a href="doctor-details.php" class="text-dark text-decoration-none">Our Doctors</a></li>
+                        <li><a href="services.php" class="text-dark text-decoration-none">Services</a></li>
+                        <li><a href="contact.php" class="text-dark text-decoration-none">Inquiry</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-8 mb-4">

@@ -1,4 +1,5 @@
 <?php
+include '../layouts/header.php';
 session_start();
 
 // Ensure only admin has access to this page
@@ -50,31 +51,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<section class="addNewTest">
+    <div class="container mt-5">
+        <h2>Add New Test</h2>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Test</title>
-</head>
+        <form method="POST" action="" class="form-inline">
+            <div class="form-group mb-2">
+                <label for="tname" class="sr-only">Test Name:</label>
+                <input type="text" class="form-control mr-2" id="tname" name="tname" placeholder="Test Name" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Add Test</button>
+            <button class="btn btn-secondary mb-2" onclick="window.location.href='adminPage.php';">Back</button>
 
-<body>
+        </form>
 
-    <h2>Add New Test</h2>
+    </div>
+</section>
 
-    <form method="POST" action="">
-        <label for="tname">Test Name:</label>
-        <input type="text" id="tname" name="tname" required>
-        <br><br>
-        <button type="submit">Add Test</button>
-    </form>
-
-    <button onclick="window.location.href='adminPage.php';">Back to Admin Portal</button>
-
-</body>
-
-</html>
 
 <?php
 $conn->close();

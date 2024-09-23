@@ -5,14 +5,13 @@ if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
     header("Location: login.php");
     exit();
 }
-
+include '../pages/appointmentCount.php';
 ?>
 
 
 <section class="admin">
     <div class="sidenav">
         <h2 class="text-center">Admin</h2>
-        <a href="#">Dashboard</a>
         <a href="appointment.php">Appointments</a>
         <a href="doctor.php">Doctor</a>
         <!-- <a href="addDoctor.php">Add Doctor</a>
@@ -22,14 +21,14 @@ if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
     </div>
 
     <div class="main">
-        <a href="login.php" class="btn btn-outline-danger logout-btn">Logout</a>
+        <a href="login.php" class="btn btn-danger logout-btn">Logout</a>
         <h2>Dashboard</h2>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Total Appointments</h5>
-                        <p class="card-text">75</p>
+                        <p class="card-text"><?php echo $appointmentCount; ?></p>
                         <a href="appointment.php" class="btn btn-primary">View Appointments</a>
                     </div>
                 </div>

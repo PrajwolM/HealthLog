@@ -27,7 +27,7 @@ if (isset($_GET['pid'])) {
 
         mysqli_commit($conn);
 
-        header("Location: doctorPortal.php?msg=Patient deleted successfully");
+        header("Location: doctorPage.php?msg=Patient deleted successfully");
         exit();
     } catch (Exception $e) {
         mysqli_rollback($conn);

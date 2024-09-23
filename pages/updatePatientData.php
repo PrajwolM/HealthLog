@@ -1,4 +1,6 @@
 <?php
+include '../layouts/header.php';
+
 session_start();
 if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
     header("Location: login.php");
@@ -38,9 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $updateStmt->bind_param("isss", $complete, $result, $pid, $tid);
 
     if ($updateStmt->execute()) {
-        echo "Test data updated successfully.";
+        echo "<div class='alert alert-success'>Test data updated successfully.</div>";
     } else {
-        echo "Error updating test data: " . $conn->error;
+        echo "<div class='alert alert-danger'>Error updating test data: " . $conn->error . "</div>";
     }
 
     $updateStmt->close();
@@ -48,67 +50,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Patient Test Data</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            margin: 20px;
-        }
 
-        form {
-            margin-bottom: 20px;
-        }
+<section class="update-patient-data mt-5">
+    <div class="container">
+        <h2 class="text-center">Update Test Data for Patient ID: <?php echo htmlspecialchars($pid); ?></h2>
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-        }
+        <form method="POST" action="" class="mb-4">
+            <div class="mb-3">
+                <label for="tid" class="form-label">Select Test:</label>
+                <select name="tid" id="tid" class="form-select" required>
+                    <option value="">--Select Test--</option>
+                    <?php while ($testRow = $testResult->fetch_assoc()): ?>
+                        <option value="<?php echo htmlspecialchars($testRow['tid']); ?>">
+                            <?php echo htmlspecialchars($testRow['tname']); ?> (Test ID: <?php echo htmlspecialchars($testRow['tid']); ?>)
+                        </option>
+                    <?php endwhile; ?>
+                </select>
+            </div>
 
-        textarea {
-            width: 100%;
-            height: 100px;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
+            <div class="mb-3">
+                <label for="result" class="form-label">Result Comment:</label>
+                <textarea name="result" id="result" class="form-control" placeholder="Enter the result comments here..." required></textarea>
+            </div>
 
-<body>
+            <div class="form-check mb-3">
+                <input type="checkbox" name="complete" class="form-check-input" id="complete" value="1">
+                <label class="form-check-label" for="complete">Mark as Complete</label>
+            </div>
 
-    <h2>Update Test Data for Patient ID: <?php echo htmlspecialchars($pid); ?></h2>
+            <button type="submit" class="btn btn-primary">Update Test Data</button>
+        </form>
 
-    <form method="POST" action="">
-        <label for="tid">Select Test:</label>
-        <select name="tid" id="tid" required>
-            <option value="">--Select Test--</option>
-            <?php while ($testRow = $testResult->fetch_assoc()): ?>
-                <option value="<?php echo htmlspecialchars($testRow['tid']); ?>">
-                    <?php echo htmlspecialchars($testRow['tname']); ?> (Test ID:
-                    <?php echo htmlspecialchars($testRow['tid']); ?>)
-                </option>
-            <?php endwhile; ?>
-        </select>
-
-        <label for="result">Result Comment:</label>
-        <textarea name="result" id="result" placeholder="Enter the result comments here..." required></textarea>
-
-        <label>
-            <input type="checkbox" name="complete" value="1"> Mark as Complete
-        </label>
-
-        <button type="submit">Update Test Data</button>
-    </form>
-
-    <button onclick="window.location.href='patientDetails.php?pid=<?php echo htmlspecialchars($pid); ?>';">
-        Back to Patient Details
-    </button>
-
-</body>
-
-</html>
+        <button class="btn btn-secondary" onclick="window.location.href='patientDetails.php?pid=<?php echo htmlspecialchars($pid); ?>';">
+            Back to Patient Details
+        </button>
+    </div>
+</section>

@@ -31,7 +31,6 @@ $query = "
     WHERE patientinfo.pid = ?
 ";
 
-
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $pid);
 $stmt->execute();
@@ -71,117 +70,82 @@ while ($testRow = $testResult->fetch_assoc()) {
 $stmt->close();
 $testStmt->close();
 $conn->close();
-
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Details</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            margin: 20px;
-        }
+<section class="patient-details">
+    <div class="container">
+        <button class="btn btn-outline-secondary mb-3" onclick="window.location.href='../pages/doctorPage.php';">Back</button> 
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
+        <h2>Patient Details for <?php echo htmlspecialchars($patientData['pName']); ?></h2>
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($patientData['phoneNumber']); ?></p>
+                <p><strong>Gender:</strong> <?php echo htmlspecialchars($patientData['pGender']); ?></p>
+                <p><strong>Date of Birth:</strong> <?php echo htmlspecialchars($patientData['pDOB']); ?></p>
+                <p><strong>Allergies:</strong> <?php echo htmlspecialchars($patientData['pAllergies'] == 1 ? 'Yes' : 'No'); ?></p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Doctor:</strong> <?php echo htmlspecialchars($patientData['doctorName'] . ' ' . $patientData['doctorSurname']); ?></p>
+                <p><strong>Specialization:</strong> <?php echo htmlspecialchars($patientData['specialization']); ?></p>
+                <p><strong>Appointment Date:</strong> <?php echo htmlspecialchars($patientData['appointmentDate']); ?></p>
+            </div>
+        </div>
 
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        h2 {
-            text-align: center;
-        }
-    </style>
-</head>
-
-<body>
-    <button class="btn btn-outline-secondary float-start" onclick="window.location.href='../pages/doctorPage.php';">Back</button> 
-
-    <h2>Patient Details for <?php echo htmlspecialchars($patientData['pName']); ?></h2>
-    <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($patientData['phoneNumber']); ?></p>
-    <p><strong>Gender:</strong> <?php echo htmlspecialchars($patientData['pGender']); ?></p>
-    <p><strong>Date of Birth:</strong> <?php echo htmlspecialchars($patientData['pDOB']); ?></p>
-
-    <p><strong>Allergies:</strong> <?php echo htmlspecialchars($patientData['pAllergies'] == 1 ? 'Yes' : 'No'); ?></p>
-
-    <p><strong>Doctor:</strong>
-        <?php echo htmlspecialchars($patientData['doctorName'] . ' ' . $patientData['doctorSurname']); ?></p>
-    <p><strong>Specialization:</strong> <?php echo htmlspecialchars($patientData['specialization']); ?></p>
-    <p><strong>Appointment Date:</strong> <?php echo htmlspecialchars($patientData['appointmentDate']); ?></p>
-
-
-    <h3>Remaining Tests</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Test ID</th>
-                <th>Test Name</th>
-                <th>Result</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (count($remainingTests) > 0): ?>
-                <?php foreach ($remainingTests as $test): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($test['tid']); ?></td>
-                        <td><?php echo htmlspecialchars($test['tname']); ?></td>
-                        <td><?php echo htmlspecialchars($test['result']); ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
+        <h3>Remaining Tests</h3>
+        <table class="table table-bordered">
+            <thead>
                 <tr>
-                    <td colspan="3">No remaining tests found.</td>
+                    <th scope="col">Test ID</th>
+                    <th scope="col">Test Name</th>
+                    <th scope="col">Result</th>
                 </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
-
-    <h3>Completed Tests</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Test ID</th>
-                <th>Test Name</th> <!-- Added Test Name Column -->
-                <th>Result</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (count($completedTests) > 0): ?>
-                <?php foreach ($completedTests as $test): ?>
+            </thead>
+            <tbody>
+                <?php if (count($remainingTests) > 0): ?>
+                    <?php foreach ($remainingTests as $test): ?>
+                        <tr>
+                            <td scope="row"><?php echo htmlspecialchars($test['tid']); ?></td>
+                            <td><?php echo htmlspecialchars($test['tname']); ?></td>
+                            <td><?php echo htmlspecialchars($test['result']); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($test['tid']); ?></td>
-                        <td><?php echo htmlspecialchars($test['tname']); ?></td> <!-- Display Test Name -->
-                        <td><?php echo htmlspecialchars($test['result']); ?></td>
+                        <td colspan="3" class="text-center">No remaining tests found.</td>
                     </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+
+        <h3>Completed Tests</h3>
+        <table class="table table-bordered">
+            <thead>
                 <tr>
-                    <td colspan="3">No completed tests found.</td>
+                    <th>Test ID</th>
+                    <th>Test Name</th>
+                    <th>Result</th>
                 </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
-    <button onclick="window.location.href='updatePatientData.php?pid=<?php echo htmlspecialchars($pid); ?>';">
-        Update Patient Data
-    </button>
+            </thead>
+            <tbody>
+                <?php if (count($completedTests) > 0): ?>
+                    <?php foreach ($completedTests as $test): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($test['tid']); ?></td>
+                            <td><?php echo htmlspecialchars($test['tname']); ?></td>
+                            <td><?php echo htmlspecialchars($test['result']); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="3" class="text-center">No completed tests found.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
 
-</body>
-
-</html>
+        <button class="btn btn-success" onclick="window.location.href='updatePatientData.php?pid=<?php echo htmlspecialchars($pid); ?>';">
+            Update Patient Data
+        </button>
+    </div>
+</section>

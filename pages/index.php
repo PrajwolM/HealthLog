@@ -40,18 +40,18 @@ echo '<h1>Index</h1>' ?> -->
             </div>
             <div class="col-lg-6">
                 <h2 class="text-center">About HealthLogs Hospital</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aut nisi veritatis sequi similique dolorum aperiam quasi quas! Repellat nesciunt impedit in aperiam sed itaque atque exercitationem cupiditate ea. Quia.</p>
+                <p>At HealthLogs, we are committed to providing exceptional healthcare services to our community. Our dedicated team of professionals offers comprehensive medical care, advanced treatments, and compassionate support to ensure your health and well-being.</p>
                 <div class="sub-content row">
                     <div class="col-md-6">
                         <h5>Our Vision</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque a est earum molestiae impedit similique, eligendi nihil perspiciatis eius ipsam minima quibusdam repudiandae asperiores sit architecto illo voluptatum, esse optio!</p>
+                        <p>our vision is to be a leader in healthcare, transforming lives through innovative medical practices and compassionate care. We strive to create a healthier community by prioritizing patient-centered services and promoting wellness for all.</p>
                     </div>
                     <div class="col-md-6">
                         <h5>Our Mission</h5>
                         <ul>
-                            <li>Hello World!</li>
-                            <li>Hello World!</li>
-                            <li>Hello World!</li>
+                            <li>To provide high-quality, compassionate healthcare to all patients.</li>
+                            <li>To invest in advanced medical technology and training.</li>
+                            <li>To promote wellness and preventive care in the community.</li>
                         </ul>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ echo '<h1>Index</h1>' ?> -->
                     </div>
                     <div class="content col-10">
                         <h4>Great Infrastructure</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint maiores, ab sit neque numquam fugit aut praesentium nulla deserunt. Totam quas unde praesentium accusamus ullam assumenda quia similique est officia.</p>
+                        <p>We pride ourselves on our state-of-the-art infrastructure. Our facility is equipped with advanced medical technologies and spacious, comfortable patient areas, ensuring a safe and efficient environment for both patients and staff. We continuously invest in modernizing our resources to provide the highest standard of care.</p>
                     </div>
                 </div>
                 <div class="medical col-6 row">
@@ -80,7 +80,7 @@ echo '<h1>Index</h1>' ?> -->
                     </div>
                     <div class="content col-10">
                         <h4>Advanced Medical Facilities</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint maiores, ab sit neque numquam fugit aut praesentium nulla deserunt. Totam quas unde praesentium accusamus ullam assumenda quia similique est officia.</p>
+                        <p>We offer cutting-edge medical facilities designed to meet diverse healthcare needs. Our hospital is equipped with the latest diagnostic tools, advanced surgical suites, and specialized treatment centers, ensuring our patients receive the highest quality of care. We are dedicated to using innovative technology to enhance patient outcomes and promote healing.</p>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@ echo '<h1>Index</h1>' ?> -->
                 </div>
                     <div class="content col-10">
                         <h4>Social Services</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint maiores, ab sit neque numquam fugit aut praesentium nulla deserunt. Totam quas unde praesentium accusamus ullam assumenda quia similique est officia.</p>
+                        <p>We believe in holistic care that extends beyond medical treatment. Our social services team is dedicated to supporting patients and their families through various programs, including counseling, financial assistance, and community outreach. We strive to address the social determinants of health, ensuring that every individual receives comprehensive support on their journey to wellness.</p>
                     </div>
                 </div>
                 <div class="excellent col-6 row">
@@ -100,7 +100,7 @@ echo '<h1>Index</h1>' ?> -->
                     </div>
                     <div class="content col-10">
                         <h4>Excellent Ancillary Services</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint maiores, ab sit neque numquam fugit aut praesentium nulla deserunt. Totam quas unde praesentium accusamus ullam assumenda quia similique est officia.</p>
+                        <p>We provide a range of excellent ancillary services that enhance patient care and streamline the treatment process. From diagnostic imaging and laboratory services to physical therapy and nutritional counseling, our expert teams work collaboratively to support our patients' health needs. We are committed to delivering high-quality, comprehensive services that ensure a seamless and positive healthcare experience. Feel free to adjust any part as needed!</p>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@ echo '<h1>Index</h1>' ?> -->
                     </div>
                     <div class="content col-10">
                         <h4>24/7 Ambulance Services</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint maiores, ab sit neque numquam fugit aut praesentium nulla deserunt. Totam quas unde praesentium accusamus ullam assumenda quia similique est officia.</p>
+                        <p>We offer round-the-clock ambulance services to ensure timely medical assistance when you need it most. Our fully equipped ambulances are staffed by trained professionals who provide critical care during transport. We are dedicated to delivering safe and efficient emergency services, prioritizing the health and well-being of our community at all times.</p>
                     </div>
                 </div>
                 <div class="technology col-6 row">
@@ -120,7 +120,7 @@ echo '<h1>Index</h1>' ?> -->
                     </div>
                     <div class="content col-10">
                         <h4>Cutting Edge Technology</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint maiores, ab sit neque numquam fugit aut praesentium nulla deserunt. Totam quas unde praesentium accusamus ullam assumenda quia similique est officia.</p>
+                        <p>We leverage cutting-edge technology to enhance patient care and improve outcomes. Our facility is equipped with the latest medical devices, advanced diagnostic tools, and innovative treatment solutions. We are committed to integrating state-of-the-art technology into our practices, ensuring that our patients receive the highest standard of care in a modern healthcare environment.</p>
                     </div>
                 </div>
             </div>
@@ -129,107 +129,60 @@ echo '<h1>Index</h1>' ?> -->
     <!-- End of Features -->
 
     <!-- Working Hours -->
-     <!-- <section class="working">
+     
+
+     <section class="working">
         <div class="container-fluid">
             <img src="../images/slider2.jpg" class="d-block w-100" alt="bg-img">
             <div class="top-left">
-                <h1>Our Clinic <br> Working Hours <br> Schedule</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aspernatur perferendis, corrupti nostrum deleniti dolorum, culpa quos nihil est eos optio nisi quod beatae possimus error incidunt fugiat consequuntur architecto!</p>
+                <h1 class="text-light">Our Clinic <br> Working Hours <br> Schedule</h1>
+                <p>Here’s our clinic’s working hours schedule:</p>
 
                 <div class="schedule row">
-                    <div class="day col-6">
+                    <div class="day col-12 col-md-6">
                         <i class="fa-solid fa-calendar-days"> <span> Monday</span></i>
                     </div>
-                    <div class="time col-6">
+                    <div class="time col-12 col-md-6">
                         <p><strong>8:00 AM - 8:00 PM</strong></p>
                     </div>
                 </div>
                 <div class="schedule row">
-                    <div class="day col-6">
+                    <div class="day col-12 col-md-6">
                         <i class="fa-solid fa-calendar-days"> <span> Tuesday</span></i>
                     </div>
-                    <div class="time col-6">
+                    <div class="time col-12 col-md-6">
                         <p><strong>8:00 AM - 8:00 PM</strong></p>
                     </div>
                 </div>
                 <div class="schedule row">
-                    <div class="day col-6">
+                    <div class="day col-12 col-md-6">
                         <i class="fa-solid fa-calendar-days"> <span> Wednesday</span></i>
                     </div>
-                    <div class="time col-6">
+                    <div class="time col-12 col-md-6">
                         <p><strong>8:00 AM - 8:00 PM</strong></p>
                     </div>
                 </div>
                 <div class="schedule row">
-                    <div class="day col-6">
+                    <div class="day col-12 col-md-6">
                         <i class="fa-solid fa-calendar-days"> <span> Thursday</span></i>
                     </div>
-                    <div class="time col-6">
+                    <div class="time col-12 col-md-6">
                         <p><strong>8:00 AM - 8:00 PM</strong></p>
                     </div>
                 </div>
                 <div class="schedule row">
-                    <div class="day col-6">
+                    <div class="day col-12 col-md-6">
                         <i class="fa-solid fa-calendar-days"> <span> Friday</span></i>
                     </div>
-                    <div class="time col-6">
+                    <div class="time col-12 col-md-6">
                         <p><strong>8:00 AM - 8:00 PM</strong></p>
                     </div>
                 </div>
             </div>
         </div>
-     </section> -->
-
-     <section class="working">
-    <div class="container-fluid">
-        <img src="../images/slider2.jpg" class="d-block w-100" alt="bg-img">
-        <div class="top-left">
-            <h1>Our Clinic <br> Working Hours <br> Schedule</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aspernatur perferendis, corrupti nostrum deleniti dolorum, culpa quos nihil est eos optio nisi quod beatae possimus error incidunt fugiat consequuntur architecto!</p>
-
-            <div class="schedule row">
-                <div class="day col-12 col-md-6">
-                    <i class="fa-solid fa-calendar-days"> <span> Monday</span></i>
-                </div>
-                <div class="time col-12 col-md-6">
-                    <p><strong>8:00 AM - 8:00 PM</strong></p>
-                </div>
-            </div>
-            <div class="schedule row">
-                <div class="day col-12 col-md-6">
-                    <i class="fa-solid fa-calendar-days"> <span> Tuesday</span></i>
-                </div>
-                <div class="time col-12 col-md-6">
-                    <p><strong>8:00 AM - 8:00 PM</strong></p>
-                </div>
-            </div>
-            <div class="schedule row">
-                <div class="day col-12 col-md-6">
-                    <i class="fa-solid fa-calendar-days"> <span> Wednesday</span></i>
-                </div>
-                <div class="time col-12 col-md-6">
-                    <p><strong>8:00 AM - 8:00 PM</strong></p>
-                </div>
-            </div>
-            <div class="schedule row">
-                <div class="day col-12 col-md-6">
-                    <i class="fa-solid fa-calendar-days"> <span> Thursday</span></i>
-                </div>
-                <div class="time col-12 col-md-6">
-                    <p><strong>8:00 AM - 8:00 PM</strong></p>
-                </div>
-            </div>
-            <div class="schedule row">
-                <div class="day col-12 col-md-6">
-                    <i class="fa-solid fa-calendar-days"> <span> Friday</span></i>
-                </div>
-                <div class="time col-12 col-md-6">
-                    <p><strong>8:00 AM - 8:00 PM</strong></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+      </section>
     <!-- End of Working Hours -->
      
 </div>
+
+<?php include '../layouts/footer.php';?>

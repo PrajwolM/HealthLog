@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Inquiry submitted successfully! You will be redirected in 3 seconds.";
         echo '<script>
             setTimeout(function() {
-                window.location.href = "../index.php";
+                window.location.href = "../pages/contact.php";
             }, 3000);
           </script>';
     } else {

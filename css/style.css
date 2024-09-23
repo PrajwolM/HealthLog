@@ -12,6 +12,22 @@ h1,h2{
     object-fit: cover; 
 }
 
+/* nav */
+.navbar-nav {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+.nav-item {
+    margin: 0 15px; /* Adjust spacing between nav items */
+}
+.login-link {
+    margin-left: auto; /* Pushes the login link to the right */
+}
+.navbar-brand .fa-heart-pulse, span{
+    color: #4A6A41;
+}
+
 /* home */
 .home .about, .features, .top-left{
     margin: 4rem ;
@@ -255,6 +271,18 @@ margin-top: 3rem;
     margin-top: 4rem;
     text-align: center;
 }
+
+/* patient details */
+.patient-details .container{
+    margin: 2rem;
+}
+.patient-details h3 {
+    text-align: center;
+} 
+.addNewTest .form-inline .form-control {
+    width: auto; 
+}
+/* add new test */
 
 /* Responsive Design */
 /* Tablets and Small Desktops */
