@@ -11,7 +11,7 @@ $row = mysqli_fetch_assoc($result);
 $count = mysqli_num_rows($result);
 
 if ($count == 1) {
-    $_SESSION['userName'] = $userName;// storing admin userName in session for future use
+    $_SESSION['userName'] = $userName;
     echo '
     <script>
         window.location.href="adminPage.php";
@@ -22,7 +22,7 @@ if ($count == 1) {
     $row = mysqli_fetch_assoc($res);
     $count = mysqli_num_rows($res);
     if ($count == 1) {
-        $_SESSION['did'] = $userName;// storing doctorid in session for future use
+        $_SESSION['did'] = $userName; 
         echo '
         <script>
             window.location.href="doctorPage.php";

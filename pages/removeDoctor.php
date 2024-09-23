@@ -4,7 +4,6 @@ include 'connection.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $did = $_POST['did'];
 
-    // SQL to delete from appointments, doctorpatient,doctorinfo tables first because doctorlogin has did as promary key
     $sql_delete_appointments = "DELETE FROM appointments WHERE did='$did'";
     $sql_delete_doctorpatient = "DELETE FROM doctorpatient WHERE did='$did'";
     $sql_delete_info = "DELETE FROM doctorinfo WHERE did='$did'";
@@ -56,7 +55,6 @@ $conn->close();
             <option value="" disabled selected>Select a doctor</option>
             <?php
             if ($result->num_rows > 0) {
-                // Output options with doctor IDs because doctor can only see hes/her patient to maintain privacy
                 while ($row = $result->fetch_assoc()) {
                     echo "<option value='" . $row['did'] . "'>" . $row['name'] . "</option>";
                 }

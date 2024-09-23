@@ -1,5 +1,5 @@
-<?php include '../layouts/header.php' ?>
 <?php
+include '../layouts/header.php';
 include 'connection.php';
 session_start();
 
@@ -9,10 +9,8 @@ $sql = "SELECT appointments.appointmentId, doctorinfo.name AS doctorName, patien
         INNER JOIN patientInfo ON appointments.pid = patientinfo.pid";
 
 if (isset($_SESSION['userName'])) {
-    // Admin sees all appointments grouped by doctor
     $sql .= " ORDER BY doctorinfo.name";
 } elseif (isset($_SESSION['did'])) {
-    // Doctor sees only their specific appointments
     $did = $_SESSION['did'];
     $sql .= " WHERE appointments.did = '$did'";
 } else {
@@ -25,10 +23,14 @@ $result = $conn->query($sql);
 
 <section class="appointment">
     <div class="main">
-        <!-- <button class="btn btn-outline-secondary float-start" onclick="window.location.href='../pages/adminPage.php';">Back</button>  -->
-        <a href="javascript:history.back()" class="btn btn-secondary float-start">Back</a>
-        <h2>Appointments</h2>
+        <?php if (isset($_SESSION['userName'])): ?>
+            <a href="../pages/adminPage.php" class="btn btn-outline-secondary float-start">Back</a>
+        <?php elseif (isset($_SESSION['did'])): ?>
+            <a href="../pages/doctorPage.php" class="btn btn-outline-secondary float-start">Back</a>
+            <a href="addAppointment.php" class="btn btn-success float-start ms-3">Add Appointment</a>
+        <?php endif; ?>
 
+        <h2>Appointments</h2>
 
         <table class="table">
             <thead>
@@ -57,10 +59,5 @@ $result = $conn->query($sql);
                 ?>
             </tbody>
         </table>
-
-
-
-
     </div>
-
 </section>

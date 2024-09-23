@@ -8,7 +8,6 @@ if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
 
 include "connection.php";
 
-// Check if pid is provided in the URL
 if (!isset($_GET['pid'])) {
     echo "No patient ID provided.";
     exit();
@@ -16,7 +15,6 @@ if (!isset($_GET['pid'])) {
 
 $pid = $_GET['pid'];
 
-// Get patient details and related information to work on them
 $query = "
     SELECT 
         * ,
@@ -75,7 +73,10 @@ $conn->close();
 
 <section class="patient-details">
     <div class="container">
-        <button class="btn btn-outline-secondary mb-3" onclick="window.location.href='../pages/doctorPage.php';">Back</button> 
+        <div class="no-print">
+            <button class="btn btn-secondary mb-3" onclick="window.location.href='../pages/doctorPage.php';">Back</button>
+            <button class="btn btn-primary mb-3" onclick="printPage();">Print Patient Details</button>
+        </div>
 
         <h2>Patient Details for <?php echo htmlspecialchars($patientData['pName']); ?></h2>
         <div class="row mb-4">
@@ -144,8 +145,22 @@ $conn->close();
             </tbody>
         </table>
 
-        <button class="btn btn-success" onclick="window.location.href='updatePatientData.php?pid=<?php echo htmlspecialchars($pid); ?>';">
-            Update Patient Data
-        </button>
+        <div class="no-print">
+            <button class="btn btn-primary" onclick="window.location.href='updatePatientData.php?pid=<?php echo htmlspecialchars($pid); ?>';">
+                Update Patient Data
+            </button>
+        </div>
     </div>
 </section>
+
+<script>
+    function printPage() {
+        window.print();
+    }
+</script>
+
+
+
+
+
+

@@ -3,7 +3,7 @@ include '../layouts/header.php';
 
 session_start();
 if (!isset($_SESSION['did'])) {
-    header("Location: login.php"); // Redirect to login if no session is set
+    header("Location: login.php"); 
     exit();
 }
 
@@ -17,9 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pGender = $_POST['pGender'];
     $pDOB = $_POST['pDOB'];
     $pAllergies = $_POST['pAllergies'];
-    $did = $_SESSION['did']; // Doctor's ID from session
+    $did = $_SESSION['did']; 
 
-    // Fetch the last pid from the patientinfo table
     $sql_get_last_pid = "SELECT pid FROM patientinfo ORDER BY pid DESC LIMIT 1";
     $result = $conn->query($sql_get_last_pid);
 
@@ -27,26 +26,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
         $last_pid = $row['pid'];
 
-        // Get the numeric part from the last pid
         $numeric_part = (int) substr($last_pid, 1);
         $new_numeric_part = $numeric_part + 1;
 
-        // id in the format P001
         $new_pid = 'P' . str_pad($new_numeric_part, 3, '0', STR_PAD_LEFT);
     } else {
         $new_pid = 'P001';
     }
 
-    // add patient data into patientinfo table first because pid is teh primary key in this table
     $sql_insert_patient = "INSERT INTO patientinfo (pid, pName, phoneNumber, pGender, pDOB, pAllergies) 
                            VALUES ('$new_pid', '$pName', '$phoneNumber', '$pGender', '$pDOB', '$pAllergies')";
 
     if ($conn->query($sql_insert_patient) === TRUE) {
-        // Also add into doctorpatient table
         $sql_insert_doctorpatient = "INSERT INTO doctorpatient (did, pid) VALUES ('$did', '$new_pid')";
 
         if ($conn->query($sql_insert_doctorpatient) === TRUE) {
-             // Redirect to doctorPage.php after successful insertion
              header("Location: doctorPage.php");
              exit();
             $message = "Patient added successfully!";

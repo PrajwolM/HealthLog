@@ -14,8 +14,6 @@ include '../pages/appointmentCount.php';
         <h2 class="text-center">Admin</h2>
         <a href="appointment.php">Appointments</a>
         <a href="doctor.php">Doctor</a>
-        <!-- <a href="addDoctor.php">Add Doctor</a>
-        <a href="removeDoctor.php">Remove Doctor</a> -->
         <a href="addNewTest.php">Add Tests</a>
         <a href="seeInquiries.php">Inquiries</a>
     </div>
@@ -58,7 +56,6 @@ include '../pages/appointmentCount.php';
                     $result = mysqli_query($conn, $query);
 
                     if (mysqli_num_rows($result) > 0) {
-                        // Loop through each row in the result
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo '<tr>
             <td>' . $row['did'] . '</td>

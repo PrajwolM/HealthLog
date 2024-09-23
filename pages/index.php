@@ -129,8 +129,6 @@ echo '<h1>Index</h1>' ?> -->
     <!-- End of Features -->
 
     <!-- Working Hours -->
-     
-
      <section class="working">
         <div class="container-fluid">
             <img src="../images/slider2.jpg" class="d-block w-100" alt="bg-img">
@@ -140,48 +138,49 @@ echo '<h1>Index</h1>' ?> -->
 
                 <div class="schedule row">
                     <div class="day col-12 col-md-6">
-                        <i class="fa-solid fa-calendar-days"> <span> Monday</span></i>
+                        <i class="fa-solid fa-calendar-days"> Monday</i>
                     </div>
                     <div class="time col-12 col-md-6">
-                        <p><strong>8:00 AM - 8:00 PM</strong></p>
+                        <p>8:00 AM - 8:00 PM</p>
                     </div>
                 </div>
                 <div class="schedule row">
                     <div class="day col-12 col-md-6">
-                        <i class="fa-solid fa-calendar-days"> <span> Tuesday</span></i>
+                        <i class="fa-solid fa-calendar-days"> Tuesday</i>
                     </div>
                     <div class="time col-12 col-md-6">
-                        <p><strong>8:00 AM - 8:00 PM</strong></p>
+                        <p>8:00 AM - 8:00 PM</p>
                     </div>
                 </div>
                 <div class="schedule row">
                     <div class="day col-12 col-md-6">
-                        <i class="fa-solid fa-calendar-days"> <span> Wednesday</span></i>
+                        <i class="fa-solid fa-calendar-days"> Wednesday</i>
                     </div>
                     <div class="time col-12 col-md-6">
-                        <p><strong>8:00 AM - 8:00 PM</strong></p>
+                        <p>8:00 AM - 8:00 PM</p>
                     </div>
                 </div>
                 <div class="schedule row">
                     <div class="day col-12 col-md-6">
-                        <i class="fa-solid fa-calendar-days"> <span> Thursday</span></i>
+                        <i class="fa-solid fa-calendar-days"> Thursday</i>
                     </div>
                     <div class="time col-12 col-md-6">
-                        <p><strong>8:00 AM - 8:00 PM</strong></p>
+                        <p>8:00 AM - 8:00 PM</p>
                     </div>
                 </div>
                 <div class="schedule row">
                     <div class="day col-12 col-md-6">
-                        <i class="fa-solid fa-calendar-days"> <span> Friday</span></i>
+                        <i class="fa-solid fa-calendar-days"> Friday</i>
                     </div>
                     <div class="time col-12 col-md-6">
-                        <p><strong>8:00 AM - 8:00 PM</strong></p>
+                        <p>8:00 AM - 8:00 PM</p>
                     </div>
                 </div>
             </div>
         </div>
       </section>
-    <!-- End of Working Hours -->
+    
+      <!-- End of Working Hours -->
      
 </div>
 

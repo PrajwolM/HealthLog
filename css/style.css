@@ -1,4 +1,4 @@
-/* #4A6A41 */
+/* main-color: #4A6A41 */
 body{
     width: 100%;
 }
@@ -19,12 +19,15 @@ h1,h2{
     width: 100%;
 }
 .nav-item {
-    margin: 0 15px; /* Adjust spacing between nav items */
+    margin: 0 15px; 
 }
 .login-link {
-    margin-left: auto; /* Pushes the login link to the right */
+    margin-left: auto; 
 }
-.navbar-brand .fa-heart-pulse, span{
+.navbar-brand .fa-heart-pulse{
+    color: #4A6A41;
+}
+.navbar-brand span{
     color: #4A6A41;
 }
 
@@ -92,14 +95,17 @@ h1,h2{
 }
 .top-left p {
     font-size: 1rem;
-    margin-bottom: 30px;
+    margin-bottom: 0px; 
 }
 .schedule {
-    margin-bottom: 10px;
+    margin: 25px 50px 5px 0;
 }
 .schedule i {
-    font-size: 1.5rem;
-    margin-right: 10px;
+    font-size: 1rem;
+}
+.time p {
+    font-size: 1rem;
+    font-weight: bold;
 }
 .schedule .day, .schedule .time {
     display: flex;
@@ -108,9 +114,7 @@ h1,h2{
 .schedule .day {
     font-weight: bold;
 }
-.schedule .time p {
-    margin: 0;
-}
+
 
 /* doctor-details */
 .doctor{
@@ -193,6 +197,53 @@ margin-top: 3rem;
 }
 .login .lead{
     text-align: center;
+}
+
+/* add appointment */
+.addAppointment{
+    padding: 2rem;
+}
+.addAppointment form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+}
+
+.addAppointment label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.addAppointment select,
+input[type="date"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.addAppointment input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.addAppointment input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+ /* Print */
+ @media print {
+    .no-print {
+        display: none; 
+    }
 }
 @media (max-width: 450px) {
     .login .h-custom {
@@ -285,7 +336,6 @@ margin-top: 3rem;
 /* add new test */
 
 /* Responsive Design */
-/* Tablets and Small Desktops */
 @media (max-width: 992px) {
     /* working schedule */
     .top-left {
@@ -308,7 +358,6 @@ margin-top: 3rem;
     }
 }
 
-/* Mobile Devices */
 @media (max-width: 768px) {
     /* working schedule */
     .top-left {
@@ -352,7 +401,6 @@ margin-top: 3rem;
     }
 }
 
-/* Extra Small Devices */
 @media (max-width: 576px) {
     .top-left h1 {
         font-size: 1.25rem;

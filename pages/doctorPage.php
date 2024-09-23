@@ -49,25 +49,13 @@ $result = $stmt->get_result();
 <section class="doctor-portal">
     <div class="sidenav">
         <h2 class="text-center">Doctor</h2>
-        <a href="#">Dashboard</a>
         <a href="#">Patients</a>
         <a href="appointment.php">Appointments</a>
     </div>
 
     <div class="main">
         <a href="login.php" class="btn btn-danger logout-btn">Logout</a>
-        <h2>Dashboard</h2>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Appointments</h5>
-                        <p class="card-text">75</p>
-                        <a href="appointment.php" class="btn btn-primary">View Appointments</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h2>Welcome!</h2>
 
         <div class="mt-4">
             <a href="addPatient.php" class="btn btn-success mb-3 float-end">Add Patient</a>
@@ -112,7 +100,7 @@ $result = $stmt->get_result();
             </table>
         </div>
 
-        <!-- Add Test Modal -->
+        <!-- Add Test -->
         <div id="addTestModal" style="display:none;">
             <h2>Add Test</h2>
             <form method="POST" action="">

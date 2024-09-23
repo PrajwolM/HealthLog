@@ -1,7 +1,6 @@
 <?php
 include("connection.php");
 session_start();
-//Remove all data from previous session
 session_unset();
 session_destroy();
 ?>

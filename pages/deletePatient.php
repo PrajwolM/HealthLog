@@ -2,12 +2,10 @@
 include "connection.php";
 session_start();
 
-// Check if pid is set in the URL
 if (isset($_GET['pid'])) {
     $pid = $_GET['pid'];
 
     mysqli_begin_transaction($conn);
-    // Delete from patientinfo because it is has the pid as primary key others are foreign key.
     try {
         $stmt1 = $conn->prepare("DELETE FROM appointments WHERE pid = ?");
         $stmt1->bind_param("s", $pid);

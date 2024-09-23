@@ -1,17 +1,15 @@
 <?php
-include 'connection.php'; // Database connection
+include 'connection.php'; 
 $message = "";
 
 include '../layouts/header.php';
 
-// Handle adding a doctor
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addDoctor'])) {
     $name = $_POST['name'] ?? '';
     $surname = $_POST['surname'] ?? '';
     $gender = $_POST['gender'] ?? '';
     $specialization = $_POST['specialization'] ?? '';
 
-    // Fetch last did
     $sql_get_last_did = "SELECT did FROM doctorlogin ORDER BY did DESC LIMIT 1";
     $result = $conn->query($sql_get_last_did);
 
@@ -25,13 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addDoctor'])) {
         $new_did = 'D0001';
     }
 
-    // Create default password
     $sql_get_last_password = "SELECT password FROM doctorlogin ORDER BY did DESC LIMIT 1";
     $result_password = $conn->query($sql_get_last_password);
     $num = ($result_password->num_rows > 0) ? (int) substr($result_password->fetch_assoc()['password'], 7) + 1 : 5;
     $new_password = "doctor" . $num;
 
-    // Insert into doctorlogin
     $sql_insert_login = "INSERT INTO doctorlogin (did, password) VALUES ('$new_did', '$new_password')";
     if ($conn->query($sql_insert_login) === TRUE) {
         $sql_insert_doctor = "INSERT INTO doctorinfo (did, name, surname, gender, specialization) VALUES ('$new_did', '$name', '$surname', '$gender', '$specialization')";
@@ -45,34 +41,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addDoctor'])) {
     }
 }
 
-// Handle deleting a doctor
 if (isset($_GET['delete_id'])) {
     $delete_id = $_GET['delete_id'];
 
-    // Begin transaction
     $conn->begin_transaction();
 
     try {
-        // First delete from doctorpatient (if exists)
         $conn->query("DELETE FROM doctorpatient WHERE did='$delete_id'");
         
-        // Then delete from doctorinfo
         $conn->query("DELETE FROM doctorinfo WHERE did='$delete_id'");
         
-        // Finally delete from doctorlogin
         $conn->query("DELETE FROM doctorlogin WHERE did='$delete_id'");
         
-        // Commit transaction
         $conn->commit();
         $message = "Doctor deleted successfully!";
     } catch (Exception $e) {
-        // Rollback transaction if any error occurs
         $conn->rollback();
         $message = "Error deleting doctor: " . $e->getMessage();
     }
 }
 
-// Handle editing a doctor
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['editDoctor'])) {
     $did = $_POST['did'] ?? '';
     $name = $_POST['name'] ?? '';
@@ -130,7 +118,7 @@ $conn->close();
             </tbody>
         </table>
 
-        <!-- Add Doctor Modal -->
+        <!-- Add Doctor -->
         <div class="modal fade" id="addDoctorModal" tabindex="-1" aria-labelledby="addDoctorModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -167,7 +155,7 @@ $conn->close();
             </div>
         </div>
 
-        <!-- Edit Doctor Modal -->
+        <!-- Edit Doctor -->
         <div class="modal fade" id="editDoctorModal" tabindex="-1" aria-labelledby="editDoctorModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
