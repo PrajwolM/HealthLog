@@ -1,5 +1,5 @@
 <?php
-include 'connection.php'; 
+include 'connection.php';
 $message = "";
 
 include '../layouts/header.php';
@@ -45,14 +45,21 @@ if (isset($_GET['delete_id'])) {
     $delete_id = $_GET['delete_id'];
 
     $conn->begin_transaction();
+    $sql_delete_appointments = "DELETE FROM appointments WHERE did='$delete_id'";
+    $sql_delete_doctorpatient = "DELETE FROM doctorpatient WHERE did='$delete_id'";
+    $sql_delete_info = "DELETE FROM doctorinfo WHERE did='$delete_id'";
+    $sql_delete_login = "DELETE FROM doctorlogin WHERE did='$delete_id'";
+
 
     try {
-        $conn->query("DELETE FROM doctorpatient WHERE did='$delete_id'");
-        
-        $conn->query("DELETE FROM doctorinfo WHERE did='$delete_id'");
-        
-        $conn->query("DELETE FROM doctorlogin WHERE did='$delete_id'");
-        
+
+        $conn->query($sql_delete_appointments);
+        $conn->query($sql_delete_doctorpatient);
+        $conn->query($sql_delete_info);
+        $conn->query($sql_delete_login);
+
+        $conn->commit();
+        echo "<p>Doctor and related records deleted successfully!</p>";
         $conn->commit();
         $message = "Doctor deleted successfully!";
     } catch (Exception $e) {
@@ -82,8 +89,10 @@ $conn->close();
 
 <section class="admin-doctor">
     <div class="main container mt-4">
-        <button class="btn btn-secondary float-start" onclick="window.location.href='../pages/adminPage.php';">Back</button> 
-        <button class="btn btn-primary  float-start ms-2" data-bs-toggle="modal" data-bs-target="#addDoctorModal">Add Doctor</button>
+        <button class="btn btn-secondary float-start"
+            onclick="window.location.href='../pages/adminPage.php';">Back</button>
+        <button class="btn btn-primary  float-start ms-2" data-bs-toggle="modal" data-bs-target="#addDoctorModal">Add
+            Doctor</button>
 
         <h2 class="text-center">Doctors Management</h2>
         <?php if ($message): ?>
@@ -106,10 +115,14 @@ $conn->close();
                         <td><?php echo $row['name'] . ' ' . $row['surname']; ?></td>
                         <td><?php echo $row['specialization']; ?></td>
                         <td>
-                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editDoctorModal" data-id="<?php echo $row['did']; ?>" data-name="<?php echo $row['name']; ?>" data-surname="<?php echo $row['surname']; ?>" data-gender="<?php echo $row['gender']; ?>" data-specialization="<?php echo $row['specialization']; ?>">
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editDoctorModal"
+                                data-id="<?php echo $row['did']; ?>" data-name="<?php echo $row['name']; ?>"
+                                data-surname="<?php echo $row['surname']; ?>" data-gender="<?php echo $row['gender']; ?>"
+                                data-specialization="<?php echo $row['specialization']; ?>">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </button>
-                            <a href="?delete_id=<?php echo $row['did']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this doctor?');">
+                            <a href="?delete_id=<?php echo $row['did']; ?>" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Are you sure you want to delete this doctor?');">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                         </td>
@@ -119,7 +132,8 @@ $conn->close();
         </table>
 
         <!-- Add Doctor -->
-        <div class="modal fade" id="addDoctorModal" tabindex="-1" aria-labelledby="addDoctorModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addDoctorModal" tabindex="-1" aria-labelledby="addDoctorModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -156,7 +170,8 @@ $conn->close();
         </div>
 
         <!-- Edit Doctor -->
-        <div class="modal fade" id="editDoctorModal" tabindex="-1" aria-labelledby="editDoctorModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editDoctorModal" tabindex="-1" aria-labelledby="editDoctorModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -184,7 +199,8 @@ $conn->close();
                             </div>
                             <div class="mb-3">
                                 <label for="editSpecialization" class="form-label">Specialization:</label>
-                                <input type="text" name="specialization" class="form-control" id="editSpecialization" required>
+                                <input type="text" name="specialization" class="form-control" id="editSpecialization"
+                                    required>
                             </div>
                             <button type="submit" name="editDoctor" class="btn btn-warning">Update Doctor</button>
                         </form>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 include '../layouts/header.php';
 session_start();
 if (!isset($_SESSION['userName']) && !isset($_SESSION['did'])) {
@@ -34,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addTest'])) {
     $stmt->close();
 }
 
-// Fetch patients for the logged-in doctor
 $query = "SELECT patientinfo.* 
           FROM patientinfo 
           INNER JOIN doctorpatient ON patientinfo.pid = doctorpatient.pid 
@@ -122,7 +121,8 @@ $result = $stmt->get_result();
                 </select>
                 <br><br>
                 <button type="submit" class="btn btn-primary text-light" name="addTest">Add Test</button>
-                <button type="button"  class="btn btn-dark text-light" onclick="document.getElementById('addTestModal').style.display='none'">Cancel</button>
+                <button type="button" class="btn btn-dark text-light"
+                    onclick="document.getElementById('addTestModal').style.display='none'">Cancel</button>
             </form>
         </div>
     </div>
