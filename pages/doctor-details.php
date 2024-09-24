@@ -30,7 +30,7 @@ $result = $conn->query($sql);
                     echo '
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="card" style="width: 18rem;">
-                            <img src="../images/about.jpg" class="card-img-top" alt="doctor-image">
+                            <img src="../images/doc.jpg" class="card-img-top" alt="doctor-image">
                             <div class="card-body row">
                                 <div class="col-6">
                                     <h6 class="card-subtitle mb-2 text-body-secondary">' . $row["name"] . '</h6>    
